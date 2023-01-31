@@ -1,0 +1,73 @@
+{
+   "CapAdd" : null,
+   "CapDrop" : null,
+   "cmd" : "/bzt-configs/my-config.yml",
+   "cpu_priority" : 50,
+   "enable_publish_all_ports" : false,
+   "enable_restart_policy" : false,
+   "enable_service_portal" : null,
+   "enabled" : true,
+   "env_variables" : [
+      {
+         "key" : "PATH",
+         "value" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      {
+         "key" : "DEBIAN_FRONTEND",
+         "value" : "noninteractive"
+      },
+      {
+         "key" : "APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE",
+         "value" : "1"
+      },
+      {
+         "key" : "APT_INSTALL",
+         "value" : "apt-get -y install --no-install-recommends"
+      },
+      {
+         "key" : "APT_UPDATE",
+         "value" : "apt-get -y update"
+      },
+      {
+         "key" : "PIP_INSTALL",
+         "value" : "python3 -m pip install"
+      }
+   ],
+   "exporting" : false,
+   "id" : "8ccc382188eddda3a43a95c833d30575c066472386095ff51d02ad795b752b5f",
+   "image" : "blazemeter/taurus:latest",
+   "is_ddsm" : false,
+   "is_package" : false,
+   "links" : [],
+   "memory_limit" : 0,
+   "name" : "blazemeter-taurus-running",
+   "network" : [
+      {
+         "driver" : "host",
+         "name" : "host"
+      }
+   ],
+   "network_mode" : "host",
+   "port_bindings" : [],
+   "privileged" : false,
+   "shortcut" : {
+      "enable_shortcut" : false,
+      "enable_status_page" : false,
+      "enable_web_page" : false,
+      "web_page_url" : ""
+   },
+   "use_host_network" : true,
+   "volume_bindings" : [
+      {
+         "host_volume_file" : "/docker/taurus/my-test",
+         "mount_point" : "/bzt-configs",
+         "type" : "rw"
+      },
+      {
+         "host_volume_file" : "/docker/taurus/artifacts",
+         "mount_point" : "/tmp/artifacts",
+         "type" : "rw"
+      }
+   ]
+}
+

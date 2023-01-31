@@ -1,0 +1,30 @@
+---
+execution:
+  - concurrency: 10
+    hold-for: 5s
+    ramp-up: 10s
+    iterations: 2000
+    scenario: serviceDefinitionTestScenario
+
+scenarios:
+  serviceDefinitionTestScenario:
+    retrieve-resources: false
+    requests:
+      - method: GET
+        url: https://<url>.azurewebsites.net/api/Service?serviceCode=<code>
+    headers:
+      accept: text/plain'
+      Authorization: Bearer <token>
+
+reporting:
+  - module: final-stats
+  - module: console
+  - module: passfail
+    criteria:
+      Error rate too high: failures>50% for 3s, stop as failed     
+
+settings:
+  check-interval: 1s
+  default-executor: jmeter
+
+provisioning: local
